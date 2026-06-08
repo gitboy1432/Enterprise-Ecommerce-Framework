@@ -5,6 +5,7 @@ package tests;
 import base.BaseTest;
 import base.DriverFactory;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 
@@ -17,14 +18,21 @@ import org.testng.annotations.Test;
 
 public class DemoTest extends BaseTest {
 
-    @Test
-    public void LaunchBrowser() {
-        System.out.println(
-                DriverFactory.getDriver().getTitle());
-        HomePage signUp= new HomePage();
-        signUp.clickLoginSignUp();
-        DriverFactory.quitDriver();
-    }
+
+
+
+
+
+        @Test
+        public void verifyLoginPageNavigation() {
+
+            HomePage homePage = new HomePage();
+
+            homePage.clickLoginSignUp();
+
+            Assert.assertTrue( DriverFactory.getDriver().getCurrentUrl().contains("login"), "Login page not opened");
+        }
+
 
     @Test
     public void LoginProcess() throws InterruptedException {
@@ -32,9 +40,8 @@ public class DemoTest extends BaseTest {
       hp.clickLoginSignUp();
 
         LoginPage lp= new LoginPage();
-        lp.enterUsername("prajapatprince1432@gmail.com");
-        lp.enterPassword("ExcerciseAutomation123@");
+        lp.enterUsername("ExcerciseAutomation@123");
+        lp.enterPassword("ExcerciseAutomation@123");
         lp.clickLoginbtn();
     }
-
 }
