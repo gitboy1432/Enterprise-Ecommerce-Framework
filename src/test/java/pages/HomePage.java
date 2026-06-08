@@ -3,6 +3,7 @@ package pages;
 import base.DriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import utils.WaitUtils;
 
 public class HomePage {
     WebDriver driver;
@@ -14,6 +15,6 @@ public class HomePage {
     By lgnbtn= By.xpath("//a[contains(text(),'Signup / Login')]");
 
     public void clickLoginSignUp(){
-        driver.findElement(lgnbtn).click();
+        WaitUtils.waitForElementClickable(lgnbtn).click();
     }
 }
