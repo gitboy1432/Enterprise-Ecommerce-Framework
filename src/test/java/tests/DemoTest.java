@@ -15,6 +15,7 @@ import utils.ConfigReader;
 
 import base.DriverFactory;
 import org.testng.annotations.Test;
+import utils.TestDataProvider;
 
 public class DemoTest extends BaseTest {
 
@@ -34,14 +35,15 @@ public class DemoTest extends BaseTest {
         }
 
 
-    @Test
-    public void LoginProcess() throws InterruptedException {
+    @Test(dataProvider = "loginData",
+    dataProviderClass = TestDataProvider .class)
+    public void LoginProcess(String email,String pass) throws InterruptedException {
     HomePage hp= new HomePage();
       hp.clickLoginSignUp();
 
         LoginPage lp= new LoginPage();
-        lp.enterUsername("ExcerciseAutomation@123");
-        lp.enterPassword("ExcerciseAutomation@123");
+        lp.enterUsername(email);
+        lp.enterPassword(pass);
         lp.clickLoginbtn();
     }
 }

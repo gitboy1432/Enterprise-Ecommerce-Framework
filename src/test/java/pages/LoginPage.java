@@ -13,7 +13,7 @@ public class LoginPage {
     By emailBox= By.xpath("//input[contains(@name,'email')]");
     By passwordBox=By.xpath("//input[contains(@name,'password')]");
     By loginBtn=By.xpath("//button[contains(text(),'Login')]");
-By afterLogin=By.xpath("//i[@class='fa fa-user']/parent::a/b");
+By afterLogin=By.xpath("//i[@class='fa fa-user']/following-sibling::b");
 
     public void enterUsername(String email){
         driver.findElement(emailBox).sendKeys(email);
